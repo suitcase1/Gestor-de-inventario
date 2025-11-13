@@ -23,7 +23,7 @@ def pedido_list(request):
 
 @login_required
 def single_pedido(request, id=0):
-    pedido = get_pedido(id)
+    pedido = get_pedidos(id)
     context = {
         'pedido': pedido
     }
