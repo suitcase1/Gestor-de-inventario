@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'pedidos',
+    'social_django',
+
 ]
 
 # Set default primary key field type to silence Django warnings
@@ -135,3 +137,22 @@ MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'static', 'media')
 STATICFILES_DIRS = (
     os.path.join(PROJECT_ROOT, 'static'),
 )
+#AUTH0
+LOGIN_URL = "/login/auth0"
+LOGIN_REDIRECT_URL = "/"
+LOGOUT_REDIRECT_URL ="https://dev-cic0f8il2u1l6hdp.us.auth0.com/v2/logout?returnTo=http%3A%2F%2F98.93.179.250:8080"
+
+SOCIAL_AUTH_TRAILING_SLASH = False # Remove end slash from routes
+SOCIAL_AUTH_AUTH0_DOMAIN = 'dev-cic0f8il2u1l6hdp.us.auth0.com'
+SOCIAL_AUTH_AUTH0_KEY = 'oyhMt2WFZrUf8Z2TaHnMAoUDQG7IltpX'
+SOCIAL_AUTH_AUTH0_SECRET = 'C6xXYVAPFMOhQU4w0TymYvoBPZKCCaXpaCpvYGK5BsUYW1Uo36-nGW33jlh-_8Y_'
+SOCIAL_AUTH_AUTH0_SCOPE = [
+ 'openid',
+ 'profile',
+ 'email',
+ 'role',
+]
+AUTHENTICATION_BACKENDS = {
+ 'gestor_de_inventario.auth0backend.Auth0',
+ 'django.contrib.auth.backends.ModelBackend',
+}
