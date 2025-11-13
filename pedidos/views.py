@@ -11,7 +11,7 @@ from gestor_de_inventario.auth0backend import getRole
 @login_required
 def pedido_list(request):
     role = getRole(request)
-    if role == "Gerencia Campus":
+    if role == "Cliente" or role == "Administrador":
         pedidos = get_pedidos()
         context = {
             'pedido_list': pedidos
@@ -33,7 +33,7 @@ def single_pedido(request, id=0):
 @login_required
 def pedido_create(request):
     role = getRole(request)
-    if role == "Gerencia Campus":
+    if role == "Administrador":
         if request.method == 'POST':
             form = PedidoForm(request.POST)
             if form.is_valid():
