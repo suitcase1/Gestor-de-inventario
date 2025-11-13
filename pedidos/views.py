@@ -3,7 +3,7 @@ from django.contrib import messages
 from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse
 from .forms import PedidoForm
-from .logic.pedido_logic import get_pedidos, get_pedido, create_pedido
+from .logic.pedido_logic import get_pedidos, create_pedido
 from django.contrib.auth.decorators import login_required
 from gestor_de_inventario.auth0backend import getRole
 
