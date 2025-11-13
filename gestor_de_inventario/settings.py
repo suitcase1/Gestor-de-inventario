@@ -80,15 +80,15 @@ WSGI_APPLICATION = 'gestor_de_inventario.wsgi.application'
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'name_db',
-        'USER': 'user_db',
-        'PASSWORD': 'user_password',
-        'HOST': 'localhost',
-        'PORT': '',
-    }
-}
+     'default': {
+         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+         'NAME': 'monitoring_db',
+         'USER': 'monitoring_user',
+         'PASSWORD': 'isis2503',
+         'HOST': os.getenv('DATABASE_HOST', 'localhost'),
+         'PORT': '',
+     }
+ }
 
 
 # Password validation
