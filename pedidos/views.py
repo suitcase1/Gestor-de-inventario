@@ -11,14 +11,19 @@ from gestor_de_inventario.auth0backend import getRole
 @login_required
 def pedido_list(request):
     role = getRole(request)
-    if role == "Cliente" or role == "Administrador":
+    if role == "Administrador":
         pedidos = get_pedidos()
         context = {
             'pedido_list': pedidos
         }
         return render(request, 'Pedido/pedidos.html', context)
     else:
-        return HttpResponse("Unauthorized User")
+        return HttpResponse("""
+            <script>
+                alert("Usuario no autorizado");
+                window.location.href = "/";
+            </script>
+        """)
 
 
 @login_required
@@ -49,4 +54,9 @@ def pedido_create(request):
         }
         return render(request, 'Pedido/pedidoCreate.html', context)
     else:
-        return HttpResponse("Unauthorized User")
+        return HttpResponse("""
+            <script>
+                alert("Usuario no autorizado");
+                window.location.href = "/";
+            </script>
+        """)
